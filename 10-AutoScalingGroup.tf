@@ -1,11 +1,12 @@
 resource "aws_autoscaling_group" "T4Gapp1_asg" {
-  name_prefix           = "T4G-auto-scaling-group-"
+  name_prefix           = "T4Gapp1-auto-scaling-group-"
   min_size              = 3
   max_size              = 15
   desired_capacity      = 6
   vpc_zone_identifier   = [
-    aws_subnet.private-eu-west-1a.id,
-    aws_subnet.private-eu-west-1b.id,
+    aws_subnet.private-us-east-1a.id,
+    aws_subnet.private-us-east-1b.id,
+    aws_subnet.private-us-east-1c.id,
     
   ]
   health_check_type          = "ELB"
@@ -52,8 +53,8 @@ resource "aws_autoscaling_group" "T4Gapp1_asg" {
 
 
 # Auto Scaling Policy
-resource "aws_autoscaling_policy" "T4G_scaling_policy" {
-  name                   = "T4G-cpu-target"
+resource "aws_autoscaling_policy" "T4Gapp1_scaling_policy" {
+  name                   = "T4Gapp1-cpu-target"
   autoscaling_group_name = aws_autoscaling_group.T4Gapp1_asg.name
 
   policy_type = "TargetTrackingScaling"

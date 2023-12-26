@@ -1,11 +1,11 @@
 resource "aws_launch_template" "T4Gapp1_LT" {
   name_prefix   = "T4Gapp1_LT"
-  image_id      = "ami-06ed60ed1369448bd"  
+  image_id      = "ami-079db87dc4c10ac91"  
   instance_type = "t2.micro"
 
-  key_name = "MyLinuxBox"
+  key_name = "OurGoldBox"
 
-  vpc_security_group_ids = [aws_security_group.T4Gapp1-sg01-servers.id]
+  vpc_security_group_ids = [aws_security_group.T4Gapp1-80-sg01-servers.id]
 
   user_data = base64encode(<<-EOF
     #!/bin/bash
@@ -37,8 +37,8 @@ resource "aws_launch_template" "T4Gapp1_LT" {
     </head>
     <body>
     <div>
-    <h1>Malgus Clan</h1>
-    <h1>Chains Broken in Ireland</h1>
+    <h1>Tech For Gold investors</h1>
+    <h1>We invest in getting money through residual income </h1>
     <p><b>Instance Name:</b> $(hostname -f) </p>
     <p><b>Instance Private Ip Address: </b> $local_ipv4</p>
     <p><b>Availability Zone: </b> $az</p>
